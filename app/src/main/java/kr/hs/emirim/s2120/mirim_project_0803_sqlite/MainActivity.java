@@ -3,6 +3,7 @@ package kr.hs.emirim.s2120.mirim_project_0803_sqlite;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -50,7 +51,22 @@ public class MainActivity extends AppCompatActivity {
                     editCount.setText(""); // 입력한 후 입력창이 자동으로 비워지기
                     break;
                 case R.id.btn_select:
+                    // 조회
+                    db = dbHelpwer.getReadableDatabase();
+                    Cursor c =  db.rawQuery("select * from idolTbl", null);
 
+                    String strName = "아이돌명\r\n__________\r\n";
+                    String strCnt = "인원수\r\n__________\r\n";
+
+                    while(c.moveToNext()){
+                        strName += c.getString(0) + "\r\n";
+                        strCnt += c.getString(1) + "\r\n";
+                    }
+                    editResultName.setText(strName);
+                    editResultCount.setText(strCnt);
+
+                    c.close();
+                    db.close();
                     break;
             }
         }
