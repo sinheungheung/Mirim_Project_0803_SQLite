@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:textColor="#000000"
-            android:text="조회"/>
+            android:text="출력"/>
     </LinearLayout>
     <LinearLayout
     android:orientation="horizontal"
